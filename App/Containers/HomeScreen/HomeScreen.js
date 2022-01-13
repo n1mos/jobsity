@@ -41,7 +41,9 @@ class HomeScreen extends React.Component {
   fetchShows(selectPage = null) {
     const { page } = this.props
 
-    const nextPage = selectPage || page + 1
+    const nextPage = selectPage === 0 ? selectPage : page + 1
+
+    console.log(selectPage);
 
     this.props.fetchShows(nextPage)
   }
