@@ -14,6 +14,7 @@ const { Types, Creators } = createActions({
   searchShowsSuccess: ['shows'],
   searchShowsFailure: ['errorMessage'],
   toggleFavorite: ['showId'],
+  setPage: ['page'],
 })
 
 export const ShowsTypes = Types

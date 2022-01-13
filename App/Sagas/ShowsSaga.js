@@ -5,6 +5,8 @@ import { showsService } from 'App/Services/ShowsService'
 export function* fetchShows(action) {
   yield put(ShowsActions.fetchShowsLoading())
 
+  yield put(ShowsActions.setPage(action.page || 0))
+
   const shows = yield call(showsService.fetchShows, action)
 
   if (shows) {

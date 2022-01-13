@@ -39,13 +39,11 @@ class HomeScreen extends React.Component {
   }
 
   fetchShows(selectPage = null) {
-    const { page, total_pages } = this.props.shows
+    const { page } = this.props
 
-    if (page < total_pages) {
-      const nextPage = selectPage || page + 1
+    const nextPage = selectPage || page + 1
 
-      this.props.fetchShows(nextPage)
-    }
+    this.props.fetchShows(nextPage)
   }
 }
 
@@ -53,6 +51,7 @@ const mapStateToProps = (state) => ({
   shows: state.shows.shows,
   showsIsLoading: state.shows.showsIsLoading,
   showsErrorMessage: state.shows.showsErrorMessage,
+  page: state.shows.page
 })
 
 const mapDispatchToProps = (dispatch) => ({

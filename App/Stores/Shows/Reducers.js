@@ -42,6 +42,13 @@ export const toggleFavorite = (state, { showId }) => {
   }
 }
 
+export const setPage = (state, { page }) => {
+  return {
+    ...state,
+    page
+  }
+}
+
 export const searchShowsLoading = (state) => ({
   ...state,
   showsIsLoading: true,
@@ -97,4 +104,5 @@ export const reducer = createReducer(INITIAL_STATE, {
   [ShowsTypes.FETCH_EPISODES_SUCCESS]: fetchEpisodesSuccess,
   [ShowsTypes.FETCH_EPISODES_FAILURE]: fetchEpisodesFailure,
   [ShowsTypes.TOGGLE_FAVORITE]: toggleFavorite,
+  [ShowsTypes.SET_PAGE]: setPage,
 })
