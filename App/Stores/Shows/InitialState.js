@@ -5,4 +5,5 @@ export const INITIAL_STATE = {
   episodes: [],
   episodesIsLoading: false,
   episodesErrorMessage: null,
+  favorites: [],
 }

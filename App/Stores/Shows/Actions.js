@@ -13,6 +13,7 @@ const { Types, Creators } = createActions({
   searchShowsLoading: null,
   searchShowsSuccess: ['shows'],
   searchShowsFailure: ['errorMessage'],
+  toggleFavorite: ['showId'],
 })
 
 export const ShowsTypes = Types

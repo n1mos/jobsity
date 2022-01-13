@@ -62,5 +62,18 @@ export default StyleSheet.create({
     ...Fonts.normal,
     color: Colors.gray3,
     fontWeight: '700',
+  },
+  favoriteContainer: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  heart: {
+    height: 18,
+    width: 18,
+    marginRight: 5
+  },
+  favorite: {
+    ...Fonts.normal,
+    color: Colors.gray3,
   }
 })

@@ -8,7 +8,7 @@ import Touchable from 'App/Components/Touchable/Touchable'
 import NavigationService from 'App/Services/NavigationService'
 import Styles from './Show.style'
 
-const Show = ({ data, page }) => {
+const Show = ({ data, page, toggleFavorite, favorites }) => {
   const imageSource = {
     uri: data.image?.original || Config.PLACEHOLDER_URL,
   }
@@ -37,8 +37,27 @@ const Show = ({ data, page }) => {
     )
   }
 
+  const renderFavorite = () => {
+    if (!page) return
+
+    const isFavorite = favorites.includes(data.id)
+
+    return (
+      <Touchable onPress={() => toggleFavorite(data.id)}>
+        <View style={Styles.favoriteContainer}>
+          <Image style={Styles.heart} source={isFavorite ? Images.heart : Images.heart_outline} resizeMode={'contain'} />
+          
+          <Text style={Styles.favorite}>
+
+            {!isFavorite ? 'Add to favorites' : 'Remove from favorites'}
+          </Text>
+        </View>
+      </Touchable>
+    )
+  }
+
   const renderContainer = () => {
-    const pageInfoContainer = page && { flexDirection: 'column', height: 70 }
+    const pageInfoContainer = page && { flexDirection: 'column' }
 
     return (
       <View style={Styles.container}>
@@ -65,6 +84,8 @@ const Show = ({ data, page }) => {
             {renderGenres()}
 
             {renderSchedule()}
+
+            {renderFavorite()}
           </View>
         </View>
       </View>

@@ -24,6 +24,24 @@ export const fetchShowsFailure = (state, { errorMessage }) => ({
   showsErrorMessage: errorMessage,
 })
 
+export const toggleFavorite = (state, { showId }) => {
+  const newFavorites = [...state.favorites]
+
+  if (newFavorites.indexOf(showId) === -1) {
+    newFavorites.push(showId)
+  } else {
+    const index = newFavorites.indexOf(showId);
+    if (index > -1) {
+      newFavorites.splice(index, 1);
+    }
+  }
+
+  return {
+    ...state,
+    favorites: newFavorites,
+  }
+}
+
 export const searchShowsLoading = (state) => ({
   ...state,
   showsIsLoading: true,
@@ -78,4 +96,5 @@ export const reducer = createReducer(INITIAL_STATE, {
   [ShowsTypes.FETCH_EPISODES_LOADING]: fetchEpisodesLoading,
   [ShowsTypes.FETCH_EPISODES_SUCCESS]: fetchEpisodesSuccess,
   [ShowsTypes.FETCH_EPISODES_FAILURE]: fetchEpisodesFailure,
+  [ShowsTypes.TOGGLE_FAVORITE]: toggleFavorite,
 })

@@ -26,12 +26,14 @@ class ShowScreen extends React.Component {
     const {
       navigation: { state: { params: { data }, }, },
       episodes,
-      episodesIsLoading
+      episodesIsLoading,
+      toggleFavorite,
+      favorites
     } = this.props
     
     return (
       <ScrollView style={Styles.scrollView}>
-        <Show page={true} data={data} />
+        <Show page={true} data={data} toggleFavorite={toggleFavorite} favorites={favorites} />
 
         <View style={Styles.overviewContainer}>
           <Text style={Styles.title}>Summary</Text>
@@ -56,10 +58,12 @@ const mapStateToProps = (state) => ({
   episodes: state.shows.episodes,
   episodesIsLoading: state.shows.episodesIsLoading,
   episodesErrorMessage: state.shows.episodesErrorMessage,
+  favorites: state.shows.favorites
 })
 
 const mapDispatchToProps = (dispatch) => ({
   fetchEpisodes: (showId) => dispatch(ShowsActions.fetchEpisodes(showId)),
+  toggleFavorite: (showId) => dispatch(ShowsActions.toggleFavorite(showId)),
 })
 
 export default connect(
