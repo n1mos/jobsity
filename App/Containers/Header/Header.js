@@ -32,6 +32,16 @@ class Header extends Component {
     )
   }
 
+  renderFavorite() {
+    return (
+      <Touchable onPress={() => NavigationService.navigate('FavoritesScreen')}>
+        <View style={Styles.favoriteContainer}>
+          <Image style={Styles.heart} source={Images.heart} resizeMode={'contain'} />
+        </View>
+      </Touchable>
+    )
+  }
+
   search = (query) => {
     this.setState({ text: query })
     
@@ -51,30 +61,37 @@ class Header extends Component {
   }
 
   render() {
+    const routes = this.props.options.navigation.state.routes
+    const hideSearch = routes[routes.length - 1].routeName === 'FavoritesScreen'
+
     return (
       <View style={Styles.headerContainer}>
         <View style={Styles.subHeaderContainer}>
           {this.renderBackButton()}
+
+          {this.renderFavorite()}
 
           <View style={Styles.logoContainer}>
             <Image style={Styles.logo} source={Images.logo} resizeMode={'contain'} />
           </View>
         </View>
 
-        <View style={Styles.searchContainer}>
-          <View style={Styles.searchIconContainer} pointerEvents="none">
-            <Image style={Styles.searchIcon} source={Images.search} resizeMode={'contain'} />
-          </View>
+        {!hideSearch &&
+          <View style={Styles.searchContainer}>
+            <View style={Styles.searchIconContainer} pointerEvents="none">
+              <Image style={Styles.searchIcon} source={Images.search} resizeMode={'contain'} />
+            </View>
 
-          <TextInput
-            ref={(input) => { this.textInput = input; }}
-            style={Styles.searchInput}
-            placeholder="Search"
-            onChangeText={this.search}
-            underlineColorAndroid="transparent"
-            value={this.state.text}
-          />
-        </View>
+            <TextInput
+              ref={(input) => { this.textInput = input; }}
+              style={Styles.searchInput}
+              placeholder="Search"
+              onChangeText={this.search}
+              underlineColorAndroid="transparent"
+              value={this.state.text}
+            />
+          </View>
+        }
       </View>
     )
   }

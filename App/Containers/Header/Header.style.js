@@ -17,6 +17,19 @@ export default StyleSheet.create({
     backgroundColor: Colors.black,
     justifyContent: 'center',
   },
+  favoriteContainer: {
+    position: 'absolute',
+    zIndex: 1,
+    right: 0,
+    paddingHorizontal: 20,
+    height: '100%',
+    backgroundColor: Colors.black,
+    justifyContent: 'center',
+  },
+  heart: {
+    width: 36,
+    height: 36
+  },
   logoContainer: {
     flex: 1,
     height: 60,

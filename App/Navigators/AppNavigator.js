@@ -5,6 +5,7 @@ import Header from 'App/Containers/Header/Header'
 import HomeScreen from 'App/Containers/HomeScreen/HomeScreen'
 import ShowScreen from 'App/Containers/ShowScreen/ShowScreen'
 import EpisodeScreen from 'App/Containers/EpisodeScreen/EpisodeScreen'
+import FavoritesScreen from 'App/Containers/FavoritesScreen/FavoritesScreen'
 
 import { Colors } from 'App/Theme'
 
@@ -13,6 +14,7 @@ const StackNavigator = createStackNavigator(
     MainScreen: HomeScreen,
     ShowScreen: ShowScreen,
     EpisodeScreen: EpisodeScreen,
+    FavoritesScreen: FavoritesScreen,
   },
   {
     initialRouteName: 'MainScreen',
